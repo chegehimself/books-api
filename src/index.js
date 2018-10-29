@@ -11,7 +11,7 @@ const app = express();
 app.use(bodyParser.json());
 
 // found out that the following is deprecated
-// mongoose.connect('mongodb://localhost/bookworm',  { useMongoClient: true });
+// mongoose.connect(process.env.MONGODB_URL,  { useMongoClient: true });
 
 // Use the following url parser
 mongoose.connect(process.env.MONGODB_URL,  { useNewUrlParser: true });
