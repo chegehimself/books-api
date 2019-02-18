@@ -22,13 +22,9 @@ router.post("/confirmation", (req, res) => {
     { confirmationToken: token },
     { confirmationToken: "", confirmed: true },
     { new: true }
-  )
-    .then(user =>
-      user ? res.json({ user: user.toAuthJSON() }) : res.status(400).json({})
-    )
-    .catch(err => {
-      console.log(err);
-    });
+  ).then(user =>
+    user ? res.json({ user: user.toAuthJSON() }) : res.status(400).json({})
+  );
 });
 
 router.post("/reset_password_request", (req, res) => {
