@@ -1,4 +1,5 @@
 /* eslint-disable  no-underscore-dangle */
+import "babel-polyfill";
 import response from "../../constants/responseMessage";
 
 const data = {
