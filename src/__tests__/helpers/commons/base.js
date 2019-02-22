@@ -13,13 +13,22 @@ faker.seed(5711);
  * @param overrides
  * @returns {Promise<{user details}>}
  */
-export const makeUser = async (overrides = {}) => {
-  const data = {
-    email: faker.internet.email(), // unique
-    password: faker.internet.password()
-  };
+export const makeUser = async (overrides = {}, times = 1) => {
+  const userData = [];
+  /* eslint-disable no-plusplus */
+  for (let i = 0; i < times; i++) {
+    userData.push({
+      first_name: faker.name.firstName(),
+      last_name: faker.name.lastName(),
+      username: `${faker.random.uuid()}-${faker.internet.userName()}`, // unique
+      phone: faker.phone.phoneNumber("07########"),
+      email: `${faker.random.uuid()}-${faker.internet.userName()}@mmdp.com`, // unique
+      password: faker.internet.password(),
+      ...overrides
+    });
+  }
 
-  return { ...data, ...overrides };
+  return times === 1 ? userData[0] : userData;
 };
 
 /**
@@ -34,6 +43,31 @@ export { faker };
 export const createUser = async (overrides = {}) =>
   User.create(await makeUser(overrides));
 
+/**
+ * Removes all collections of specified model created by tests. This is to ensure
+ * a test can be run without worrying about duplication or other likely
+ * database inconsistencies.
+ *
+ * @param model
+ * @returns {Promise<void>}
+ */
+export const removeAllCollections = async model => {
+  await model.remove({});
+};
+
+/**
+ * Removes all groups and users created by tests. This helps to ensure a test
+ * can be run from a clean start without risking unwanted duplicates and
+ * other inconsistencies. This is very useful for tests that make use
+ * of app.login(), app.loginRandom(), createUser() and
+ * createGroup().
+ *
+ * @returns {Promise<void>}
+ */
+export const removeAllUsers = async () => {
+  await removeAllCollections(User);
+};
+
 export class app {
   static token = null;
 
@@ -45,10 +79,8 @@ export class app {
    * @param user
    * @returns {Promise<void>}
    */
-  static async login(userData, permissions = []) {
-    const group = await createGroup(permissions);
+  static async login(userData) {
     const user = userData;
-    user.groups = [group._id];
     user.save();
     this.token = generateToken(user.toObject());
   }

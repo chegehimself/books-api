@@ -25,10 +25,7 @@ export default {
             .email()
             .required()
         }),
-        username: Joi.string()
-          .alphanum()
-          .min(3)
-          .max(30),
+        username: Joi.string(),
         password: Joi.string().required()
       }
     }

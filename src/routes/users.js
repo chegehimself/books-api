@@ -16,7 +16,7 @@ router.post("/", [validate(validator.signup)], (req, res) => {
     .save()
     .then(userRecord => {
       sendConfirmationEmail(userRecord);
-      res.json({ user: userRecord.toAuthJSON() });
+      res.status(201).json({ user: userRecord.toAuthJSON() });
     })
     .catch(err => res.status(400).json({ errors: parseErrors(err.errors) }));
 });

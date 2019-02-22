@@ -1,7 +1,11 @@
 /* eslint-disable  no-underscore-dangle */
 import "babel-polyfill";
+import chai from "chai";
+import expect from "expect";
 import response from "../../constants/responseMessage";
-import { makeUser, app } from "../helpers/commons/base";
+import { makeUser, app, removeAllUsers } from "../helpers/commons/base";
+
+chai.should();
 
 const data = {
   email: "admin@mmdp.com",
@@ -18,16 +22,20 @@ const baseUrl = "/api/users/";
 
 describe("Users", () => {
   describe("Create users", () => {
+    beforeEach(async () => {
+      await removeAllUsers();
+    });
     it("should create a user successfully", async () => {
       const user = await makeUser();
       const res = await app.post(baseUrl).send({
         user
       });
-      console.log(res.status);
-      console.log(res.body);
       res.status.should.equal(201);
-      res.body.message.should.equal(response.accountCreated);
-      res.body.status.should.equal(status.SUCCESS);
+      expect(res.body).toMatchObject({
+        user: {
+          confirmed: false
+        }
+      });
     });
   });
 });
