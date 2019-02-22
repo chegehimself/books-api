@@ -5,15 +5,25 @@
   "license": "MIT",
   "scripts": {
     "start": "nodemon --exec babel-node -- src/index.js",
-    "test": "NODE_ENV=test mocha --require @babel/register ./src/__tests__/tests"
+    "test": "NODE_ENV=test mocha --recursive --require @babel/register ./src/__tests__/tests --reporter spec --timeout 10000 --exit"
   },
   "babel": {
     "presets": [
       "@babel/preset-env",
       "@babel/preset-react"
+    ],
+    "plugins": [
+      "@babel/plugin-transform-runtime",
+      "@babel/plugin-proposal-class-properties"
+    ],
+    "ignore": [
+      "node_modules",
+      "**/public"
     ]
   },
   "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.2.0",
+    "@babel/runtime": "^7.3.1",
     "babel-cli": "^6.26.0",
     "babel-eslint": "^10.0.1",
     "babel-preset-env": "^1.7.0",
@@ -32,6 +42,7 @@
   "dependencies": {
     "@babel/core": "^7.3.3",
     "@babel/node": "^7.2.2",
+    "@babel/plugin-proposal-class-properties": "^7.3.3",
     "@babel/preset-env": "^7.3.1",
     "@babel/preset-react": "^7.0.0",
     "@babel/register": "^7.0.0",

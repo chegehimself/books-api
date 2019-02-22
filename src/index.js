@@ -37,3 +37,5 @@ app.get("/*", (req, res) => {
 app.use(errorHandler);
 
 app.listen(8080, () => console.log("running on localhost:8080"));
+
+export default app;

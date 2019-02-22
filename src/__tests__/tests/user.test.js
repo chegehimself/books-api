@@ -1,6 +1,7 @@
 /* eslint-disable  no-underscore-dangle */
 import "babel-polyfill";
 import response from "../../constants/responseMessage";
+import { makeUser, app } from "../helpers/commons/base";
 
 const data = {
   email: "admin@mmdp.com",
@@ -13,13 +14,16 @@ const data = {
   validEmailRequired: "please input a valid email"
 };
 
+const baseUrl = "/";
+
 describe("Users", () => {
   describe("Create users", () => {
     it("should create a user successfully", async () => {
       const user = await makeUser();
-      const res = await app.post(data.postUrl).send({
+      const res = await app.post(baseUrl).send({
         user
       });
+      console.log(res.body);
       res.status.should.equal(201);
       res.body.message.should.equal(response.accountCreated);
       res.body.status.should.equal(status.SUCCESS);

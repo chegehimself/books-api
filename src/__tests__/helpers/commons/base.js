@@ -2,6 +2,7 @@ import supertest from "supertest";
 import express from "express";
 import faker from "faker";
 import User from "../../../models/User";
+import router from "../../../";
 
 faker.seed(5711);
 
@@ -72,7 +73,7 @@ export class app {
     this.token = null;
   }
 
-  static app = supertest(express());
+  static app = supertest(router);
 
   /**
    * Make a get request with the authorization header (token) set if a user is
