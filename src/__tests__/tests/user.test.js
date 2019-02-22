@@ -14,7 +14,7 @@ const data = {
   validEmailRequired: "please input a valid email"
 };
 
-const baseUrl = "/";
+const baseUrl = "/api/users/";
 
 describe("Users", () => {
   describe("Create users", () => {
@@ -23,6 +23,7 @@ describe("Users", () => {
       const res = await app.post(baseUrl).send({
         user
       });
+      console.log(res.status);
       console.log(res.body);
       res.status.should.equal(201);
       res.body.message.should.equal(response.accountCreated);
