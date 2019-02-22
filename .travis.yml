@@ -1,0 +1,15 @@
+language: node_js
+node_js:
+  - "iojs"
+  - "7"
+cache:
+  directories:
+    - node_modules
+install:
+  - yarn install
+script:
+  - npm test
+  - npm run coveralls
+after_success:
+  - ./node_modules/.bin/jscoverage lib lib-cov
+  - ./node_modules/.bin/mocha ./src/__tests__/tests -R mocha-lcov-reporter | ./node_modules/coveralls/bin/coveralls.js

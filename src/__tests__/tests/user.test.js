@@ -2,7 +2,6 @@
 import "babel-polyfill";
 import chai from "chai";
 import expect from "expect";
-import response from "../../constants/responseMessage";
 import { makeUser, app, removeAllUsers } from "../helpers/commons/base";
 
 chai.should();
@@ -35,6 +34,19 @@ describe("Users", () => {
         user: {
           confirmed: false
         }
+      });
+    });
+    it("should create a user successfully", async () => {
+      const user = await makeUser();
+      await app.post(baseUrl).send({
+        user
+      });
+      const res = await app.post(baseUrl).send({
+        user
+      });
+      res.status.should.equal(400);
+      expect(res.body).toMatchObject({
+        errors: { email: "This email is already taken" }
       });
     });
   });
