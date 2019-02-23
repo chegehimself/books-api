@@ -24,4 +24,4 @@ install:
 script:
   - yarn test
 after_success:
-  - yarn coverall
+  - yarn run coverall
