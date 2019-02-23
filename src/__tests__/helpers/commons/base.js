@@ -40,8 +40,16 @@ export const makeUser = async (overrides = {}, times = 1) => {
  */
 export { faker };
 
-export const createUser = async (overrides = {}) =>
-  User.create(await makeUser(overrides));
+export const createUser = async (overrides = {}) => {
+  const newUser = await makeUser(overrides);
+  const { email, password } = newUser;
+  const user = new User({ email });
+  user.setPassword(password);
+  user.setConfirmationToken();
+  user.save();
+  return user;
+  // User.create(await makeUser(overrides));
+};
 
 /**
  * Removes all collections of specified model created by tests. This is to ensure
