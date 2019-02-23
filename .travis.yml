@@ -8,8 +8,6 @@ cache:
 install:
   - yarn install
 script:
-  - npm test
-  - npm run coveralls
+  - yarn test
 after_success:
-  - ./node_modules/.bin/jscoverage lib lib-cov
-  - ./node_modules/.bin/mocha ./src/__tests__/tests -R mocha-lcov-reporter | ./node_modules/coveralls/bin/coveralls.js
+  - yarn coverall

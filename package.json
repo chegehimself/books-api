@@ -7,7 +7,7 @@
     "start": "nodemon --exec babel-node -- src/index.js",
     "test": "NODE_ENV=test mocha --recursive --compilers js:@babel/register --require @babel/polyfill ./src/__tests__/tests --reporter spec --timeout 10000 --exit",
     "coverage": "nyc --reporter=text mocha --recursive --compilers js:@babel/register --require @babel/polyfill ./src/__tests__/tests --reporter spec --timeout 10000 --exit",
-    "coveralls": "jest --coverage && cat ./coverage/lcov.info | coveralls"
+    "coverall": "nyc report --reporter=text-lcov | coveralls"
   },
   "babel": {
     "presets": [
@@ -26,7 +26,6 @@
   "devDependencies": {
     "@babel/cli": "^7.0.0",
     "@babel/core": "^7.0.0",
-    "@babel/node": "^7.0.0",
     "@babel/plugin-transform-runtime": "^7.2.0",
     "@babel/preset-env": "^7.0.0",
     "@babel/register": "^7.0.0",
@@ -47,10 +46,8 @@
     "prettier": "^1.16.4"
   },
   "dependencies": {
-    "@babel/core": "^7.3.3",
     "@babel/node": "^7.2.2",
     "@babel/plugin-proposal-class-properties": "^7.3.3",
-    "@babel/preset-env": "^7.3.1",
     "@babel/preset-react": "^7.0.0",
     "@babel/register": "^7.0.0",
     "babel-core": "7.0.0-bridge.0",
