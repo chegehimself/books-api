@@ -79,6 +79,10 @@ export const removeAllUsers = async () => {
 export class app {
   static token = null;
 
+  static setAuthtokenHeader(request) {
+    return request.set("authorization", `Bearer ${this.token}`);
+  }
+
   /**
    * Login a user by passing an existing user object. Also, specify the user
    * permissions. Behind the scenes it creates a group with the permissions
@@ -125,7 +129,7 @@ export class app {
     const request = this.app.get(url);
 
     if (this.token) {
-      return request.set("authorization", `Bearer ${this.token}`);
+      this.setAuthtokenHeader(this.token);
     }
     return request;
   }
@@ -141,7 +145,7 @@ export class app {
     const request = this.app.post(url);
 
     if (this.token) {
-      return request.set("authorization", `Bearer ${this.token}`);
+      this.setAuthtokenHeader(this.token);
     }
     return request;
   }
@@ -157,7 +161,7 @@ export class app {
     const request = this.app.put(url);
 
     if (this.token) {
-      return request.set("authorization", `Bearer ${this.token}`);
+      this.setAuthtokenHeader(this.token);
     }
 
     return request;
@@ -174,7 +178,7 @@ export class app {
     const request = this.app.delete(url);
 
     if (this.token) {
-      return request.set("authorization", `Bearer ${this.token}`);
+      this.setAuthtokenHeader(this.token);
     }
 
     return request;
