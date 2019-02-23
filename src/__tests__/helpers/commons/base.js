@@ -80,7 +80,9 @@ export class app {
   static token = null;
 
   static setAuthtokenHeader(request) {
-    return request.set("authorization", `Bearer ${this.token}`);
+    if (this.token) {
+      request.set("authorization", `Bearer ${this.token}`);
+    }
   }
 
   /**
@@ -127,10 +129,7 @@ export class app {
    */
   static get(url) {
     const request = this.app.get(url);
-
-    if (this.token) {
-      this.setAuthtokenHeader(this.token);
-    }
+    this.setAuthtokenHeader(this.token);
     return request;
   }
 
@@ -143,10 +142,7 @@ export class app {
    */
   static post(url) {
     const request = this.app.post(url);
-
-    if (this.token) {
-      this.setAuthtokenHeader(this.token);
-    }
+    this.setAuthtokenHeader(this.token);
     return request;
   }
 
@@ -159,11 +155,7 @@ export class app {
    */
   static put(url) {
     const request = this.app.put(url);
-
-    if (this.token) {
-      this.setAuthtokenHeader(this.token);
-    }
-
+    this.setAuthtokenHeader(this.token);
     return request;
   }
 
@@ -176,11 +168,7 @@ export class app {
    */
   static delete(url) {
     const request = this.app.delete(url);
-
-    if (this.token) {
-      this.setAuthtokenHeader(this.token);
-    }
-
+    this.setAuthtokenHeader(this.token);
     return request;
   }
 }
