@@ -94,5 +94,9 @@ describe("Users", () => {
         user: { confirmed: true }
       });
     });
+    it("should render a template for unavailable routes", async () => {
+      const res = await app.get(authBaseUrl).send({});
+      res.status.should.equal(200);
+    });
   });
 });
