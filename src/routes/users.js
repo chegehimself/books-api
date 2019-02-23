@@ -7,6 +7,7 @@ import validator from "../middlewares/validator";
 
 const router = express.Router();
 
+// signup route
 router.post("/", [validate(validator.signup)], (req, res) => {
   const { email, password } = req.body.user;
   const user = new User({ email });

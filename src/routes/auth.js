@@ -5,6 +5,7 @@ import validator from "../middlewares/validator";
 
 const router = express.Router();
 
+// login route
 router.post("/", [validate(validator.login)], (req, res) => {
   const { credentials } = req.body;
   User.findOne({ email: credentials.email }).then(user => {
