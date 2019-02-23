@@ -94,6 +94,12 @@ describe("Users", () => {
         user: { confirmed: true }
       });
     });
+    it("should fail to activate user with bad token", async () => {
+      const token = "an invalid token";
+      const res = await apiActivateUser(token);
+      res.status.should.equal(400);
+      expect(res.body).toMatchObject({});
+    });
     it("should render a template for unavailable routes", async () => {
       const res = await app.get(authBaseUrl).send({});
       res.status.should.equal(200);
