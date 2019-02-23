@@ -7,12 +7,15 @@ const email = Joi.when("username", {
     .email()
     .required()
 });
+
+const password = Joi.string().required();
+
 export default {
   login: {
     body: {
       credentials: {
         email,
-        password: Joi.string().required()
+        password
       }
     }
   },
@@ -21,7 +24,7 @@ export default {
       user: {
         email,
         username: Joi.string(),
-        password: Joi.string().required()
+        password
       }
     }
   }
