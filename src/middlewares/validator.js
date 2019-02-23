@@ -1,16 +1,17 @@
 import Joi from "joi";
 
+const email = Joi.when("username", {
+  is: Joi.exist(),
+  then: Joi.string().email(),
+  otherwise: Joi.string()
+    .email()
+    .required()
+});
 export default {
   login: {
     body: {
       credentials: {
-        email: Joi.when("username", {
-          is: Joi.exist(),
-          then: Joi.string().email(),
-          otherwise: Joi.string()
-            .email()
-            .required()
-        }),
+        email,
         password: Joi.string().required()
       }
     }
@@ -18,13 +19,7 @@ export default {
   signup: {
     body: {
       user: {
-        email: Joi.when("username", {
-          is: Joi.exist(),
-          then: Joi.string().email(),
-          otherwise: Joi.string()
-            .email()
-            .required()
-        }),
+        email,
         username: Joi.string(),
         password: Joi.string().required()
       }
