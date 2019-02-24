@@ -5,6 +5,7 @@ import validator from "../middlewares/validator";
 
 const router = express.Router();
 
+// login route
 router.post("/", [validate(validator.login)], (req, res) => {
   const { credentials } = req.body;
   User.findOne({ email: credentials.email }).then(user => {
@@ -22,26 +23,22 @@ router.post("/confirmation", (req, res) => {
     { confirmationToken: token },
     { confirmationToken: "", confirmed: true },
     { new: true }
-  )
-    .then(user =>
-      user ? res.json({ user: user.toAuthJSON() }) : res.status(400).json({})
-    )
-    .catch(err => {
-      console.log(err);
-    });
+  ).then(user =>
+    user ? res.json({ user: user.toAuthJSON() }) : res.status(400).json({})
+  );
 });
 
-router.post("/reset_password_request", (req, res) => {
-  User.findOne({ email: req.body.email }).then(user => {
-    if (user) {
-      sendResetPasswordEmail(user);
-      res.json({});
-    } else {
-      res
-        .status(400)
-        .json({ errors: { global: "There is no user with such email" } });
-    }
-  });
-});
+// router.post("/reset_password_request", (req, res) => {
+//   User.findOne({ email: req.body.email }).then(user => {
+//     if (user) {
+//       sendResetPasswordEmail(user);
+//       res.json({});
+//     } else {
+//       res
+//         .status(400)
+//         .json({ errors: { global: "There is no user with such email" } });
+//     }
+//   });
+// });
 
 export default router;

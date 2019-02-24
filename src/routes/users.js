@@ -7,6 +7,7 @@ import validator from "../middlewares/validator";
 
 const router = express.Router();
 
+// signup route
 router.post("/", [validate(validator.signup)], (req, res) => {
   const { email, password } = req.body.user;
   const user = new User({ email });
@@ -16,7 +17,7 @@ router.post("/", [validate(validator.signup)], (req, res) => {
     .save()
     .then(userRecord => {
       sendConfirmationEmail(userRecord);
-      res.json({ user: userRecord.toAuthJSON() });
+      res.status(201).json({ user: userRecord.toAuthJSON() });
     })
     .catch(err => res.status(400).json({ errors: parseErrors(err.errors) }));
 });

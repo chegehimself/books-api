@@ -1,6 +1,7 @@
 export default {
+  accountCreated: "Account successfully created",
   INVALID_CREDENTIALS: "The Username or password is incorrect!",
-  SUCCESSFUL_LOGIN: "Succesfully logged in!",
+  SUCCESSFUL_LOGIN: "successfully logged in!",
   INTERNAL_SERVER_ERROR:
     "Oops! A technical error occurred. Please try again later.",
   UNCOMPLETED_ACCOUNT:
