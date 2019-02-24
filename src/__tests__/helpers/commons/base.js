@@ -2,6 +2,7 @@ import supertest from "supertest";
 import faker from "faker";
 import User from "../../../models/User";
 import router from "../../../";
+import { generateToken } from "./jwt";
 
 faker.seed(5711);
 

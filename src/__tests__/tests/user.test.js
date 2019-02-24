@@ -5,17 +5,6 @@ import { makeUser, app, removeAllUsers } from "../helpers/commons/base";
 
 chai.should();
 
-const data = {
-  email: "admin@mmdp.com",
-  password: "secure",
-  username: "tom",
-  postUrl: "/api/auth",
-  getAllUrl: "/api/users/",
-  emailRequired: "please input the email",
-  invalidEmail: "mmdp@mail",
-  validEmailRequired: "please input a valid email"
-};
-
 const baseUrl = "/api/users/";
 const authBaseUrl = "/api/auth/";
 
@@ -87,6 +76,7 @@ describe("Users", () => {
     });
     it("should activate user properly", async () => {
       const user = await apiSignUp();
+      /* eslint-disable prefer-destructuring */
       const token = user.body.user.token;
       const res = await apiActivateUser(token);
       res.status.should.equal(200);
