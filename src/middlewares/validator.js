@@ -27,5 +27,8 @@ export default {
         password
       }
     }
+  },
+  reset_password_request: {
+    body: { email }
   }
 };

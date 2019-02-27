@@ -111,5 +111,9 @@ describe("Users", () => {
       const res = await apiRequestPasswordResetLink("fake@emal.com");
       res.status.should.equal(400);
     });
+    it("should fail if email key is not existing", async () => {
+      const res = await apiRequestPasswordResetLink();
+      res.status.should.equal(400);
+    });
   });
 });
