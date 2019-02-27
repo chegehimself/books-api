@@ -20,6 +20,11 @@ const apiActivateUser = token =>
     token
   });
 
+const apiRequestPasswordResetLink = email =>
+  app.post(`${authBaseUrl}/reset_password_request`).send({
+    email
+  });
+
 describe("Users", () => {
   describe("Create users", () => {
     beforeEach(async () => {
@@ -93,6 +98,18 @@ describe("Users", () => {
     it("should render a template for unavailable routes", async () => {
       const res = await app.get(authBaseUrl).send({});
       res.status.should.equal(200);
+    });
+    it("should send password reset link to the user", async () => {
+      const user = await makeUser();
+      await app.post(baseUrl).send({
+        user
+      });
+      const res = await apiRequestPasswordResetLink(user.email);
+      res.status.should.equal(200);
+    });
+    it("should fail to send password reset link if the email dont exist", async () => {
+      const res = await apiRequestPasswordResetLink("fake@emal.com");
+      res.status.should.equal(400);
     });
   });
 });

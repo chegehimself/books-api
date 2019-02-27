@@ -35,6 +35,23 @@ schema.methods.generateConfirmationUrl = function generateConfirmationUrl() {
   return `${process.env.HOST}/confirmation/${this.confirmationToken}`;
 };
 
+schema.methods.generateResetPasswordToken = function generateResetPasswordToken() {
+  return jwt.sign(
+    {
+      /* eslint-disable-next-line no-underscore-dangle */
+      _id: this._id
+    },
+    process.env.JWT_SECRET,
+    { expiresIn: "1h" }
+  );
+};
+
+schema.methods.generateResetPasswordLink = function generateResetPasswordLink() {
+  return `${
+    process.env.HOST
+  }/reset_password/${this.generateResetPasswordToken()}`;
+};
+
 schema.methods.generateJWT = function generateJWT() {
   return jwt.sign(
     {
