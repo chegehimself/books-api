@@ -38,7 +38,6 @@ schema.methods.generateConfirmationUrl = function generateConfirmationUrl() {
 schema.methods.generateResetPasswordToken = function generateResetPasswordToken() {
   return jwt.sign(
     {
-      /* eslint-disable-next-line no-underscore-dangle */
       _id: this._id
     },
     process.env.JWT_SECRET,
