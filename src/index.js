@@ -23,6 +23,7 @@ mongoose.Promise = Promise;
 
 // found out that the following is deprecated
 // mongoose.connect(process.env.MONGODB_URL,  { useMongoClient: true });
+mongoose.connect(process.env.MONGODB_URL, { useNewUrlParser: true });
 
 createDbConnection();
 
