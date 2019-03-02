@@ -9,6 +9,7 @@ import apiResponse from "./middlewares/apiResponse";
 
 import auth from "./routes/auth";
 import users from "./routes/users";
+import createDbConnection from "./utils/dbConnection";
 
 dotenv.config();
 const app = express();
@@ -23,8 +24,7 @@ mongoose.Promise = Promise;
 // found out that the following is deprecated
 // mongoose.connect(process.env.MONGODB_URL,  { useMongoClient: true });
 
-// Use the following url parser
-mongoose.connect(process.env.MONGODB_URL, { useNewUrlParser: true });
+createDbConnection();
 
 app.use("/api/auth", auth);
 

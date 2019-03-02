@@ -38,7 +38,8 @@ schema.methods.generateConfirmationUrl = function generateConfirmationUrl() {
 schema.methods.generateResetPasswordToken = function generateResetPasswordToken() {
   return jwt.sign(
     {
-      _id: this._id
+      _id: this._id,
+      email: this.email
     },
     process.env.JWT_SECRET,
     { expiresIn: "1h" }

@@ -1,7 +1,13 @@
 /* eslint-disable  no-underscore-dangle */
 import chai from "chai";
 import expect from "expect";
-import { makeUser, app, removeAllUsers } from "../helpers/commons/base";
+import {
+  makeUser,
+  app,
+  removeAllUsers,
+  createUser
+} from "../helpers/commons/base";
+import { generateExpiredToken } from "../helpers/commons/jwt";
 
 chai.should();
 
@@ -23,6 +29,16 @@ const apiActivateUser = token =>
 const apiRequestPasswordResetLink = email =>
   app.post(`${authBaseUrl}/reset_password_request`).send({
     email
+  });
+
+const apiResetPassword = data =>
+  app.post(`${authBaseUrl}/reset_password`).send({
+    data
+  });
+
+const apiValidateToken = token =>
+  app.post(`${authBaseUrl}/validate_token`).send({
+    token
   });
 
 describe("Users", () => {
@@ -114,6 +130,52 @@ describe("Users", () => {
     it("should fail if email key is not existing", async () => {
       const res = await apiRequestPasswordResetLink();
       res.status.should.equal(400);
+    });
+    it("should fail to reset password with invalid token", async () => {
+      const data = { password: "newPasswordbc", token: "invalid" };
+      const res = await apiResetPassword(data);
+      res.status.should.equal(401);
+    });
+    it("should validate user before password reset", async () => {
+      const user = await makeUser();
+      await app.post(baseUrl).send({
+        user
+      });
+      const res = await apiRequestPasswordResetLink(user.email);
+      const res1 = await apiValidateToken(res.body.user.token);
+      res1.status.should.equal(200);
+    });
+    it("should fail to validate user with invalid token", async () => {
+      const res1 = await apiValidateToken("invalidToken");
+      res1.status.should.equal(401);
+    });
+    it("should reset password as expected", async () => {
+      const user = await makeUser();
+      await app.post(baseUrl).send({
+        user
+      });
+      const res = await apiRequestPasswordResetLink(user.email);
+      const res1 = await apiResetPassword({
+        password: "newPassword",
+        token: res.body.user.token
+      });
+      res1.status.should.equal(200);
+    });
+    it("should fail to reset password with wrong password", async () => {
+      const res = await apiResetPassword({
+        password: "newPassword",
+        token: "invalid"
+      });
+      res.status.should.equal(401);
+    });
+    it("should fail to reset password if the user does not exist", async () => {
+      const user = createUser();
+      const token = generateExpiredToken({ _id: user._id, email: user.email });
+      const res = await apiResetPassword({
+        password: "newPassword",
+        token
+      });
+      res.status.should.equal(404);
     });
   });
 });
