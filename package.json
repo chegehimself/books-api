@@ -25,7 +25,7 @@
   },
   "nyc": {
     "include": "src",
-    "exclude": ["**/errorHandler.js", "**/apiResponse.js", "**src/__tests__/"]
+    "exclude": ["**/errorHandler.js", "**/apiResponse.js", "**/dbConnection.js", "**src/__tests__/"]
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0",

@@ -11,6 +11,9 @@ export const generateToken = payload => {
   }
 };
 
+export const generateExpiredToken = payload =>
+  jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: "1s" });
+
 export const generateInvalidToken = payload => {
   try {
     return jwt.sign(payload, "wrong_secret");

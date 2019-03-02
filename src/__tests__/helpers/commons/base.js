@@ -23,7 +23,7 @@ export const makeUser = async (overrides = {}, times = 1) => {
       last_name: faker.name.lastName(),
       username: `${faker.random.uuid()}-${faker.internet.userName()}`, // unique
       phone: faker.phone.phoneNumber("07########"),
-      email: `${faker.random.uuid()}-${faker.internet.userName()}@mmdp.com`, // unique
+      email: `${faker.internet.userName()}@test.com`, // unique
       password: faker.internet.password(),
       ...overrides
     });
