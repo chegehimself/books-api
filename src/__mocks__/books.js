@@ -10,7 +10,7 @@
     goodreadsId: '{{index()}}',
     title: '{{lorem(1, "words")}}',
     author: "{{firstName()}} {{surname()}}",
-    covers: ["{{repeat(3)}}", "http://placehold.it/32x32"],
+    covers: ["{{repeat(3)}}", "http://placehold.it/480x720"],
     pages: "{{integer(1000, 10000)}}"
   }
 ];
@@ -23,9 +23,9 @@ export default [
     title: "do",
     author: "Beverly Waters",
     covers: [
-      "http://placehold.it/32x32",
-      "http://placehold.it/32x32",
-      "http://placehold.it/32x32"
+      "http://placehold.it/480x720",
+      "http://placehold.it/480x720",
+      "http://placehold.it/480x720"
     ],
     pages: 9663
   },
@@ -35,9 +35,9 @@ export default [
     title: "minim",
     author: "Eloise Mckenzie",
     covers: [
-      "http://placehold.it/32x32",
-      "http://placehold.it/32x32",
-      "http://placehold.it/32x32"
+      "http://placehold.it/480x720",
+      "http://placehold.it/480x720",
+      "http://placehold.it/480x720"
     ],
     pages: 5094
   },
@@ -47,9 +47,9 @@ export default [
     title: "commodo",
     author: "Hope Dejesus",
     covers: [
-      "http://placehold.it/32x32",
-      "http://placehold.it/32x32",
-      "http://placehold.it/32x32"
+      "http://placehold.it/480x720",
+      "http://placehold.it/480x720",
+      "http://placehold.it/480x720"
     ],
     pages: 7666
   },
@@ -59,9 +59,9 @@ export default [
     title: "duis",
     author: "Evangeline Christensen",
     covers: [
-      "http://placehold.it/32x32",
-      "http://placehold.it/32x32",
-      "http://placehold.it/32x32"
+      "http://placehold.it/480x720",
+      "http://placehold.it/480x720",
+      "http://placehold.it/480x720"
     ],
     pages: 9642
   },
@@ -71,9 +71,9 @@ export default [
     title: "ullamco",
     author: "Sparks Hardin",
     covers: [
-      "http://placehold.it/32x32",
-      "http://placehold.it/32x32",
-      "http://placehold.it/32x32"
+      "http://placehold.it/480x720",
+      "http://placehold.it/480x720",
+      "http://placehold.it/480x720"
     ],
     pages: 9867
   },
@@ -83,9 +83,9 @@ export default [
     title: "exercitation",
     author: "Jordan Miranda",
     covers: [
-      "http://placehold.it/32x32",
-      "http://placehold.it/32x32",
-      "http://placehold.it/32x32"
+      "http://placehold.it/480x720",
+      "http://placehold.it/480x720",
+      "http://placehold.it/480x720"
     ],
     pages: 9675
   },
@@ -95,9 +95,9 @@ export default [
     title: "ad",
     author: "Karin Patton",
     covers: [
-      "http://placehold.it/32x32",
-      "http://placehold.it/32x32",
-      "http://placehold.it/32x32"
+      "http://placehold.it/480x720",
+      "http://placehold.it/480x720",
+      "http://placehold.it/480x720"
     ],
     pages: 8167
   }
