@@ -1,8 +1,8 @@
 import supertest from "supertest";
 import faker from "faker";
 import User from "../../../models/User";
-import router from "../../../";
-import { generateToken } from "./jwt";
+import router from "../../../index";
+import { generateInvalidToken, generateToken } from "./jwt";
 
 faker.seed(5711);
 
@@ -65,11 +65,11 @@ export const removeAllCollections = async model => {
 };
 
 /**
- * Removes all groups and users created by tests. This helps to ensure a test
+ * Removes all users created by tests. This helps to ensure a test
  * can be run from a clean start without risking unwanted duplicates and
  * other inconsistencies. This is very useful for tests that make use
- * of app.login(), app.loginRandom(), createUser() and
- * createGroup().
+ * of app.login(), app.loginRandom() and createUser()
+ *
  *
  * @returns {Promise<void>}
  */
@@ -101,15 +101,27 @@ export class app {
   }
 
   /**
-   * Login a randomly generated user that has the permissions provided. Behind
-   * the scenes it creates a group with the permissions and attaches the
+   * Login a randomly generated user that has and attaches
    * user to it.
    *
-   * @param permissions
    * @returns {Promise<void>}
    */
-  static async loginRandom(permissions = []) {
-    this.token = generateToken((await createUser(permissions)).toObject());
+  static async loginRandom() {
+    const genUser = (await createUser()).toObject();
+    this.token = generateToken(genUser.email);
+  }
+
+  /**
+   * Login a user with an expired token
+   *
+   * @return {Promise<void>}
+   */
+  static async loginExpired() {
+    const genUser = (await createUser()).toObject();
+    this.token = generateInvalidToken({
+      _id: genUser._id,
+      email: genUser.email
+    });
   }
 
   /**
@@ -130,7 +142,7 @@ export class app {
    */
   static get(url) {
     const request = this.app.get(url);
-    this.setAuthtokenHeader(this.token);
+    this.setAuthtokenHeader(request);
     return request;
   }
 
@@ -143,7 +155,7 @@ export class app {
    */
   static post(url) {
     const request = this.app.post(url);
-    this.setAuthtokenHeader(this.token);
+    this.setAuthtokenHeader(request);
     return request;
   }
 
@@ -156,7 +168,7 @@ export class app {
    */
   static put(url) {
     const request = this.app.put(url);
-    this.setAuthtokenHeader(this.token);
+    this.setAuthtokenHeader(request);
     return request;
   }
 
@@ -169,7 +181,7 @@ export class app {
    */
   static delete(url) {
     const request = this.app.delete(url);
-    this.setAuthtokenHeader(this.token);
+    this.setAuthtokenHeader(request);
     return request;
   }
 }
