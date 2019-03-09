@@ -20,7 +20,7 @@ export default [
   {
     _id: "5c7c07c7ed2d0e94637e6c4e",
     goodreadsId: 0,
-    title: "do",
+    title: "Monks Arcade",
     author: "Beverly Waters",
     covers: [
       "http://placehold.it/480x720",
@@ -32,7 +32,7 @@ export default [
   {
     _id: "5c7c07c797b7cdd455e0dfc9",
     goodreadsId: 1,
-    title: "minim",
+    title: "Minimal Judgement",
     author: "Eloise Mckenzie",
     covers: [
       "http://placehold.it/480x720",
@@ -44,7 +44,7 @@ export default [
   {
     _id: "5c7c07c7896535aaa95d8d67",
     goodreadsId: 2,
-    title: "commodo",
+    title: "American Mafia",
     author: "Hope Dejesus",
     covers: [
       "http://placehold.it/480x720",
@@ -56,7 +56,7 @@ export default [
   {
     _id: "5c7c07c771756aeba18cac60",
     goodreadsId: 3,
-    title: "duis",
+    title: "Dragon Master",
     author: "Evangeline Christensen",
     covers: [
       "http://placehold.it/480x720",
@@ -68,7 +68,7 @@ export default [
   {
     _id: "5c7c07c7552b0c143d0191ab",
     goodreadsId: 4,
-    title: "ullamco",
+    title: "Mastering Docker",
     author: "Sparks Hardin",
     covers: [
       "http://placehold.it/480x720",
@@ -80,7 +80,7 @@ export default [
   {
     _id: "5c7c07c7ac1cc310fd4985f8",
     goodreadsId: 5,
-    title: "exercitation",
+    title: "Start Your Day Right",
     author: "Jordan Miranda",
     covers: [
       "http://placehold.it/480x720",
@@ -92,7 +92,7 @@ export default [
   {
     _id: "5c7c07c7bbdf50feb9e18dd7",
     goodreadsId: 6,
-    title: "ad",
+    title: "How to Fall in Love",
     author: "Karin Patton",
     covers: [
       "http://placehold.it/480x720",
