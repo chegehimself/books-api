@@ -9,7 +9,7 @@ const router = express.Router();
 router.use(authenticate);
 
 router.get("/", (req, res) => {
-  Book.find({ userId: req.currentUser._id }).then(book => res.json({ book }));
+  Book.find({ userId: req.currentUser._id }).then(books => res.json({ books }));
 });
 
 router.post("/", (req, res) => {
