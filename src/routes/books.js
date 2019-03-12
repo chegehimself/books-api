@@ -13,11 +13,9 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-  Book.create({ ...req.body.book, userId: req.currentUser._id }).then(book =>
-    res
-      .json({ book })
-      .catch(err => res.status(400).json({ errors: parseErrors(err.errors) }))
-  );
+  Book.create({ ...req.body.book, userId: req.currentUser._id })
+    .then(book => res.status(201).json({ book }))
+    .catch(err => res.status(400).json({ errors: parseErrors(err.errors) }));
 });
 
 router.get("/search", authenticate, (req, res) => {
