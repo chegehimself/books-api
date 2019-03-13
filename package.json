@@ -4,12 +4,43 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon --exec babel-node -- src/index.js"
+    "start": "nodemon --exec babel-node -- src/index.js",
+    "test": "NODE_ENV=test mocha --recursive --compilers js:@babel/register --require @babel/polyfill ./src/__tests__/tests --reporter spec --timeout 10000 --exit",
+    "coverage": "nyc --reporter=text mocha --recursive --compilers js:@babel/register --require @babel/polyfill ./src/__tests__/tests --reporter spec --timeout 10000 --exit",
+    "coveralls": "nyc --reporter=text-lcov --reporter=text  mocha --recursive --compilers js:@babel/register --require @babel/polyfill ./src/__tests__/tests --reporter spec --timeout 10000 --exit | coveralls"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-react"
+    ],
+    "plugins": [
+      "@babel/plugin-transform-runtime",
+      "@babel/plugin-proposal-class-properties"
+    ],
+    "ignore": [
+      "node_modules",
+      "**/public"
+    ]
+  },
+  "nyc": {
+    "include": "src",
+    "exclude": [
+      "**/errorHandler.js",
+      "**/apiResponse.js",
+      "**/dbConnection.js",
+      "**src/__tests__/"
+    ]
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-transform-runtime": "^7.2.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/register": "^7.0.0",
+    "@babel/runtime": "^7.3.1",
     "babel-eslint": "^10.0.1",
-    "babel-preset-env": "^1.7.0",
+    "coveralls": "^3.0.2",
     "eslint": "^5.8.0",
     "eslint-config-airbnb": "^15.0.1",
     "eslint-config-prettier": "^3.1.0",
@@ -17,20 +48,45 @@
     "eslint-plugin-jsx-a11y": "^5.1.1",
     "eslint-plugin-prettier": "^3.0.0",
     "eslint-plugin-react": "^7.11.1",
+    "jscoverage": "^0.6.0",
+    "mocha-lcov-reporter": "^1.3.0",
     "nodemon": "^1.18.5",
-    "prettier": "^1.14.3"
+    "nyc": "^13.3.0",
+    "prettier": "^1.16.4"
   },
   "dependencies": {
+    "@babel/node": "^7.2.2",
+    "@babel/plugin-proposal-class-properties": "^7.3.3",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/register": "^7.0.0",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-loader": "^8.0.5",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-latest": "^6.24.1",
+    "babel-preset-node6": "^11.0.0",
+    "babel-preset-stage-3": "^6.24.1",
+    "babel-upgrade": "^0.0.24",
     "bcrypt": "^3.0.2",
     "bluebird": "^3.5.2",
     "body-parser": "^1.18.3",
+    "chai": "^4.2.0",
+    "concurrently": "^4.1.0",
     "dotenv": "^6.1.0",
+    "expect": "^24.1.0",
     "express": "^4.16.4",
+    "express-validation": "^1.0.2",
+    "faker": "^4.1.0",
+    "joi": "^14.3.1",
     "jsonwebtoken": "^8.3.0",
     "jwt-decode": "^2.2.0",
     "lodash": "^4.17.11",
+    "mocha": "^5.2.0",
     "mongoose": "^5.3.7",
     "mongoose-unique-validator": "^2.0.2",
-    "nodemailer": "^4.7.0"
+    "nodemailer": "^4.7.0",
+    "request-promise": "^4.2.4",
+    "supertest": "^3.4.2",
+    "xml2js": "^0.4.19"
   }
 }

@@ -5,3 +5,5 @@ EMAIL_HOST=smtp.mailtrap.io
 EMAIL_PORT=2525
 EMAIL_USER=username
 EMAIL_PASS=password
+NODE_ENV=development
+GOODREADS_KEY=get-at-http://goodreads.com/api
