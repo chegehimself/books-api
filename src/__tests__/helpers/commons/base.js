@@ -87,17 +87,14 @@ export class app {
   }
 
   /**
-   * Login a user by passing an existing user object. Also, specify the user
-   * permissions. Behind the scenes it creates a group with the permissions
-   * and attaches the user to it.
+   * Login a user
    *
-   * @param user
-   * @returns {Promise<void>}
+   * @param userDetails
+   * @returns {Object}
    */
-  static async login(userData) {
-    const user = userData;
-    user.save();
-    this.token = generateToken(user.toObject());
+  static async login(userDetails) {
+    const { email } = userDetails;
+    this.token = generateToken({ email });
   }
 
   /**

@@ -25,7 +25,12 @@
   },
   "nyc": {
     "include": "src",
-    "exclude": ["**/errorHandler.js", "**/apiResponse.js", "**/dbConnection.js", "**src/__tests__/"]
+    "exclude": [
+      "**/errorHandler.js",
+      "**/apiResponse.js",
+      "**/dbConnection.js",
+      "**src/__tests__/"
+    ]
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0",
@@ -56,6 +61,7 @@
     "@babel/register": "^7.0.0",
     "babel-core": "7.0.0-bridge.0",
     "babel-loader": "^8.0.5",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-polyfill": "^6.26.0",
     "babel-preset-latest": "^6.24.1",
     "babel-preset-node6": "^11.0.0",
@@ -79,6 +85,8 @@
     "mongoose": "^5.3.7",
     "mongoose-unique-validator": "^2.0.2",
     "nodemailer": "^4.7.0",
-    "supertest": "^3.4.2"
+    "request-promise": "^4.2.4",
+    "supertest": "^3.4.2",
+    "xml2js": "^0.4.19"
   }
 }
