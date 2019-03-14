@@ -41,6 +41,6 @@ app.get("/*", (req, res) => {
 
 app.use(errorHandler);
 
-app.listen(PORT, () => console.log(`running on localhost:${PORT}}`));
+app.listen(PORT, () => console.log(`running on localhost:${PORT}`));
 
 export default app;
