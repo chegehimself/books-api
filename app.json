@@ -1,0 +1,58 @@
+
+{
+  "addons": [
+    "mongolab"
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ],
+  "env": {
+    "EMAIL_HOST": {
+      "required": true
+    },
+    "EMAIL_PASS": {
+      "required": true
+    },
+    "EMAIL_PORT": {
+      "required": true
+    },
+    "EMAIL_USER": {
+      "required": true
+    },
+    "GOODREADS_KEY": {
+      "required": true
+    },
+    "HOST": {
+      "required": true
+    },
+    "JWT_SECRET": {
+      "required": true
+    },
+    "MONGODB_URI": {
+      "required": true
+    },
+    "MONGODB_URL": {
+      "required": true
+    },
+    "NODE_ENV": {
+      "required": true
+    },
+    "PRODUCTION": {
+      "required": true
+    },
+    "TEST_DB": {
+      "required": true
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1
+    }
+  },
+  "name": "books-api",
+  "scripts": {
+  },
+  "stack": "heroku-18"
+}
