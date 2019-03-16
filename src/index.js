@@ -15,6 +15,7 @@ import createDbConnection from "./utils/dbConnection";
 dotenv.config();
 const app = express();
 
+const PORT = process.env.PORT || 8080;
 app.use(apiResponse);
 
 app.use(bodyParser.json());
@@ -40,6 +41,6 @@ app.get("/*", (req, res) => {
 
 app.use(errorHandler);
 
-app.listen(8080, () => console.log("running on localhost:8080"));
+app.listen(PORT, () => console.log(`running on localhost:${PORT}`));
 
 export default app;
