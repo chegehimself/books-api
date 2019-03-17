@@ -9,8 +9,9 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh 'npm coverage'
-             }
+                // Run the tests
+                sh 'npm test'
+            }
         }
     }
 }
