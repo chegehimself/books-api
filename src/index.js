@@ -15,7 +15,7 @@ import createDbConnection from "./utils/dbConnection";
 dotenv.config();
 const app = express();
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8082;
 app.use(apiResponse);
 
 app.use(bodyParser.json());

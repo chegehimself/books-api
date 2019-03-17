@@ -23,6 +23,9 @@ const fetPages = goodreadsId =>
   app.get(`${baseUrl}/fetchPages?goodreadsId=${goodreadsId}`);
 
 describe("should be able to see a list of the books", () => {
+  before(() => {
+    app.close();
+  });
   beforeEach(async () => {
     app.logout();
     await removeAllUsers();
