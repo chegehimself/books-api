@@ -13,11 +13,9 @@ pipeline {
                 sh 'npm test'
             }
         }
-        stage('Test Report') {
-            steps {
-                // Run coverage
-                sh 'npm run coverage'
-                junit 'coverage/index.html'
+        post {
+            always {
+                junit 'coverage/index.xml'
             }
         }
     }
