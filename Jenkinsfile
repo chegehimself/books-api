@@ -13,7 +13,7 @@ pipeline {
                 sh 'npm test'
             }
         }
-        state('Test Report') {
+        stage('Test Report') {
             steps {
                 // Run coverage
                 sh 'npm run coverage'
