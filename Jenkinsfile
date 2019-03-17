@@ -17,7 +17,7 @@ pipeline {
      post {
         always {
             sh 'npm run coverage'
-            junit 'coverage/index.xml'
+            junit 'report.xml'
         }
     }
 }
