@@ -17,6 +17,7 @@ pipeline {
             steps {
                 // Run coverage
                 sh 'npm run coverage'
+                junit 'coverage/*.html'
             }
         }
     }
