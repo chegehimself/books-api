@@ -13,10 +13,11 @@ pipeline {
                 sh 'npm test'
             }
         }
-        post {
-            always {
-                junit 'coverage/index.xml'
-            }
+    }
+     post {
+        always {
+            sh 'npm run coverage'
+            junit 'coverage/index.xml'
         }
     }
 }
