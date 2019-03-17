@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon --exec babel-node -- src/index.js",
     "test": "NODE_ENV=test mocha --recursive --compilers js:@babel/register --require @babel/polyfill ./src/__tests__/tests --reporter spec --timeout 10000 --exit",
-    "coverage": "nyc --reporter xml --reporter text --report-dir ./coverage npm run test",
+    "coverage": "nyc --reporter xml --reporter mocha-jenkins-reporter --report-dir ./coverage npm run test",
     "coveralls": "nyc --reporter=text-lcov --reporter=text npm run test| coveralls"
   },
   "babel": {
@@ -83,6 +83,7 @@
     "jwt-decode": "^2.2.0",
     "lodash": "^4.17.11",
     "mocha": "^5.2.0",
+    "mocha-jenkins-reporter": "^0.4.1",
     "mongoose": "^5.3.7",
     "mongoose-unique-validator": "^2.0.2",
     "nodemailer": "^4.7.0",
