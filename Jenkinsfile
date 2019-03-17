@@ -9,12 +9,6 @@ pipeline {
         }
         stage('Test') {
             steps {
-                // Run the tests
-                sh 'npm test'
-            }
-        }
-        stage('Test coverage') {
-            steps {
                 sh 'npm coverage'
              }
         }
