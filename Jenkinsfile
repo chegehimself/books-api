@@ -16,8 +16,7 @@ pipeline {
     }
      post {
         always {
-            sh 'npm run test-jenkins'
-            junit 'report.xml'
+            sh 'npm run coverage'
         }
     }
 }

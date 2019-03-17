@@ -7,7 +7,6 @@
     "start": "nodemon --exec babel-node -- src/index.js",
     "test": "NODE_ENV=test mocha --recursive --compilers js:@babel/register --require @babel/polyfill ./src/__tests__/tests --reporter spec --timeout 10000 --exit",
     "coverage": "nyc --reporter xml --reporter text --report-dir ./coverage npm run test",
-    "test-jenkins": "JUNIT_REPORT_PATH=report.xml npm run test --colors --reporter mocha-jenkins-reporter",
     "coveralls": "nyc --reporter=text-lcov --reporter=text npm run test| coveralls"
   },
   "babel": {
