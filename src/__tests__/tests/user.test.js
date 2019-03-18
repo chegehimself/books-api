@@ -43,6 +43,9 @@ const apiValidateToken = token =>
 
 describe("Users", () => {
   describe("Create users", () => {
+    before(() => {
+      app.close();
+    });
     beforeEach(async () => {
       await removeAllUsers();
     });

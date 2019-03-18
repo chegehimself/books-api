@@ -15,7 +15,7 @@ import createDbConnection from "./utils/dbConnection";
 dotenv.config();
 const app = express();
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8082;
 app.use(apiResponse);
 
 app.use(bodyParser.json());
@@ -23,8 +23,6 @@ app.use(bodyParser.json());
 // overwrite the built in mongo promise library with bluebird promise library.
 mongoose.Promise = Promise;
 
-// found out that the following is deprecated
-// mongoose.connect(process.env.MONGODB_URL,  { useMongoClient: true });
 mongoose.connect(process.env.MONGODB_URL, { useNewUrlParser: true });
 
 createDbConnection();

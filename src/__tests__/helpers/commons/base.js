@@ -181,4 +181,8 @@ export class app {
     this.setAuthtokenHeader(request);
     return request;
   }
+
+  static close() {
+    return router.listen().close();
+  }
 }
