@@ -1,3 +1,8 @@
+/*
+ * authenticate.js
+ * Middleware to authenticate users when making request
+ */
+
 import jwt from "jsonwebtoken";
 import User from "../models/User";
 

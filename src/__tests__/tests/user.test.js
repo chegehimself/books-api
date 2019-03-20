@@ -79,7 +79,6 @@ describe("Users", () => {
       await app.post(baseUrl).send({
         user
       });
-      /* eslint-disable no-shadow */
       const res = await app.post(authBaseUrl).send({
         credentials: user
       });
