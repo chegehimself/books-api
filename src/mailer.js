@@ -1,3 +1,8 @@
+/*
+ * mailer.js
+ * Send email
+ */
+
 import nodemailer from "nodemailer";
 
 const from = '"Books" <info@books.com>';
