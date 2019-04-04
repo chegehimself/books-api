@@ -2308,11 +2308,6 @@ diff-sequences@^24.3.0:
   resolved "https://registry.yarnpkg.com/diff-sequences/-/diff-sequences-24.3.0.tgz#0f20e8a1df1abddaf4d9c226680952e64118b975"
   integrity sha512-xLqpez+Zj9GKSnPWS0WZw1igGocZ+uua8+y+5dDNTT934N3QuY1sp2LkHzwiaYQGz60hMq0pjAshdeXm5VUOEw==
 
-diff@1.0.7:
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/diff/-/diff-1.0.7.tgz#24bbb001c4a7d5522169e7cabdb2c2814ed91cf4"
-  integrity sha1-JLuwAcSn1VIhaefKvbLCgU7ZHPQ=
-
 diff@3.5.0, diff@^3.5.0:
   version "3.5.0"
   resolved "https://registry.yarnpkg.com/diff/-/diff-3.5.0.tgz#800c0dd1e0a8bfbc95835c202ad220fe317e5a12"
@@ -4288,16 +4283,6 @@ mkdirp@0.5.1, mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@~0.5.1:
   dependencies:
     minimist "0.0.8"
 
-mocha-jenkins-reporter@^0.4.1:
-  version "0.4.1"
-  resolved "https://registry.yarnpkg.com/mocha-jenkins-reporter/-/mocha-jenkins-reporter-0.4.1.tgz#d944ce5f7fb157f4bbcea8de8d535db50ade2823"
-  integrity sha512-IqnIylrkKJG0lxeoawRkhv/uiYojMEw3o9TQOpDFarPYKVq4ymngVPwsyfMB0XMDqtDbOTOCviFg8xOLHb80/Q==
-  dependencies:
-    diff "1.0.7"
-    mkdirp "0.5.1"
-    mocha "^5.2.0"
-    xml "^1.0.1"
-
 mocha-junit-reporter@^1.18.0:
   version "1.18.0"
   resolved "https://registry.yarnpkg.com/mocha-junit-reporter/-/mocha-junit-reporter-1.18.0.tgz#9209a3fba30025ae3ae5e6bfe7f9c5bc3c2e8ee2"
@@ -4559,6 +4544,11 @@ normalize-path@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/normalize-path/-/normalize-path-3.0.0.tgz#0dcd69ff23a1c9b11fd0978316644a0388216a65"
   integrity sha512-6eZs5Ls3WtCisHWp9S2GUy8dqkpGi4BVSz3GaqiE6ezub0512ESztXUwUB6C6IKbQkY2Pnb/mD4WYojCRwcwLA==
+
+now@^15.0.1:
+  version "15.0.1"
+  resolved "https://registry.yarnpkg.com/now/-/now-15.0.1.tgz#a0694e2777a93e1c5e814663fe066cc036a0d564"
+  integrity sha512-iAxrNlQKprwTauZFNI8eWgloWn45792qumF/ItEh8Pjv8+xfs8qAWHtRsyK8q5tCmToY3d70uu0ASvVGTmVrwQ==
 
 npm-bundled@^1.0.1:
   version "1.0.6"
@@ -6365,7 +6355,7 @@ xml2js@^0.4.19:
     sax ">=0.6.0"
     xmlbuilder "~9.0.1"
 
-xml@^1.0.0, xml@^1.0.1:
+xml@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/xml/-/xml-1.0.1.tgz#78ba72020029c5bc87b8a81a3cfcd74b4a2fc1e5"
   integrity sha1-eLpyAgApxbyHuKgaPPzXS0ovweU=

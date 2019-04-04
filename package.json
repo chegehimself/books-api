@@ -86,6 +86,7 @@
     "mongoose": "^5.3.7",
     "mongoose-unique-validator": "^2.0.2",
     "nodemailer": "^4.7.0",
+    "now": "^15.0.1",
     "request-promise": "^4.2.4",
     "supertest": "^3.4.2",
     "xml2js": "^0.4.19"
